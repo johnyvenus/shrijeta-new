@@ -1,0 +1,59 @@
+/* styles.css - Non-critical and supplementary styles */
+
+/* General Body and Layout */
+body {
+    line-height: 1.6;
+    background-color: #fff;
+    color: #333;
+}
+
+.main-container {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* --- Header Supplementary Styles --- */
+
+/* Navigation link hover effect */
+.nav-menu a:hover,
+.nav-menu a:focus {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Phone number hover effect */
+.phone-number:hover,
+.phone-number:focus {
+    text-decoration: underline;
+}
+
+/* Desktop CTA button hover effect */
+@media (min-width: 768px) {
+    .cta-button:hover,
+    .cta-button:focus {
+        background-color: #0056b3;
+    }
+}
+
+/* Add a subtle transition for the mobile menu */
+@media (max-width: 767px) {
+    .nav-menu {
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    .nav-menu.is-open {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

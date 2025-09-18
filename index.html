@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrijeta Global</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* --- CRITICAL HEADER CSS START --- */
+        /* This block must be inlined in the <head> of every page for the header to work correctly. */
+        :root {
+            --header-height: 60px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            /* Reserve space for sticky header and potentially the phone number line */
+            padding-top: calc(var(--header-height) + 30px);
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo-link img {
+            display: block;
+            height: 40px;
+            width: auto;
+        }
+
+        .menu-toggle {
+            background: none; border: none; padding: 0; cursor: pointer;
+        }
+
+        .nav-menu {
+            list-style: none; margin: 0; padding: 0;
+        }
+
+        .header-right-items {
+            display: flex; align-items: center; gap: 1.5rem;
+        }
+
+        /* Mobile Styles (up to 767px) */
+        @media (max-width: 767px) {
+            .header-container {
+                position: relative;
+            }
+
+            .primary-nav { order: 1; }
+            .header-right-items { order: 0; }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: calc(var(--header-height) - 1px);
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                border-top: 1px solid #e0e0e0;
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            .nav-menu.is-open { display: flex; }
+            .nav-menu li { width: 100%; }
+            .nav-menu a { display: block; padding: 0.75rem 1rem; text-decoration: none; color: #333; }
+
+            .cta-button { display: none; } /* Hide desktop button */
+
+            .header-actions {
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background: #f8f8f8;
+                border-bottom: 1px solid #e0e0e0;
+                text-align: center;
+                padding: 5px 0;
+            }
+            .phone-number {
+                font-size: 0.9rem;
+                font-weight: 500;
+                text-decoration: none;
+                color: #333;
+            }
+        }
+
+        /* Desktop Styles (768px and up) */
+        @media (min-width: 768px) {
+            body {
+                padding-top: var(--header-height); /* Reset padding for desktop */
+            }
+            .menu-toggle { display: none; }
+            .nav-menu { display: flex; flex-direction: row; gap: 1.5rem; }
+            .mobile-cta-item { display: none; } /* Hide mobile link */
+
+            .phone-number {
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+            }
+            .cta-button {
+                display: inline-block;
+                background-color: #007bff;
+                color: #fff;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+                text-decoration: none;
+                font-weight: 500;
+            }
+            .cta-button:hover, .cta-button:focus { background-color: #0056b3; }
+        }
+
+        /* Accessibility & Scroll Lock */
+        :focus-visible { outline: 3px solid #0056b3; outline-offset: 2px; }
+        body.no-scroll { overflow: hidden; }
+    </style>
+</head>
+<body>
+
+    <!--
+      Reusable Header Block Start
+      To use this header on other pages, you must:
+      1. Copy this entire <header> element.
+      2. Copy the critical CSS <style> block from the <head> of this document.
+      3. Ensure 'styles.css' and 'script.js' are linked correctly on the new page.
+    -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo-link">
+                <!-- The logo will be placed here. Using a placeholder path for now. -->
+                <img src="assets/logo.svg" alt="Shrijeta Global" width="160" height="40">
+            </a>
+
+            <nav id="primary-nav" class="primary-nav" aria-label="Main Navigation">
+                <button class="menu-toggle" aria-controls="primary-nav-menu" aria-expanded="false" aria-label="Toggle menu">
+                    <!-- Hamburger Icon -->
+                    <svg class="hamburger-icon" viewBox="0 0 100 80" width="24" height="24" fill="#333">
+                        <rect width="100" height="15" rx="8"></rect>
+                        <rect y="30" width="100" height="15" rx="8"></rect>
+                        <rect y="60" width="100" height="15" rx="8"></rect>
+                    </svg>
+                </button>
+                <ul id="primary-nav-menu" class="nav-menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/services.html">Services</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                    <li class="mobile-cta-item"><a href="/contact.html">Get a Quote</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-right-items">
+                <div class="header-actions">
+                    <a href="tel:+91XXXXXXXXXX" class="phone-number">+91-XXXXXXXXXX</a>
+                </div>
+                <a href="/contact.html" class="cta-button">Get a Quote</a>
+            </div>
+        </div>
+    </header>
+    <!-- Reusable Header Block End -->
+
+    <main>
+        <div class="main-container">
+            <h1>Welcome to Shrijeta Global</h1>
+            <p>This is the main content of the page. The header above will be updated to be sticky and fully responsive.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 Shrijeta Global. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
